@@ -2,7 +2,13 @@
 
 bool isNumber(std::string str)
 {
-    return std::all_of(str.begin(), str.end(), ::isdigit);
+  unsigned long i = 0;
+   while(i < str.length()){
+    if(str[i]>= '0' && str[i]<= '9')
+        return 1;
+    i++;
+   }
+   return 0;
 }
 
 int check_identifier(int type, std::string input)
@@ -93,7 +99,7 @@ void phoneBook::search()
             std::cout << "Invalid input! Please enter a number" << std::endl;
             continue;
         }
-        int selectedIndex = std::stoi(input);
+        int selectedIndex = std::atoi(input.c_str());
         if (selectedIndex >= 0 && selectedIndex < this->contactCount)
         {
             std::cout << "First Name: " << person[selectedIndex].getFirstName() << std::endl;
@@ -113,5 +119,5 @@ void phoneBook::search()
 void phoneBook::exit()
 {
     std::cout << "Program is terminated. See you <3" << std::endl;
-    std::exit(0);
+   std:: exit(0);
 }
