@@ -16,9 +16,9 @@ private:
 
 public:
    phoneBook() : index(0), contactCount(0) {};
-   void add();
-void fill_validate(Contact& contact,std::string name,int type);
-   void search();
+   int add();
+int fill_validate(Contact& contact,std::string name,int type);
+   int search();
    void exit();
 };
 

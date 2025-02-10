@@ -1,7 +1,10 @@
 #ifndef CONTACT_HPP
-#define CONTACT_HPP
+# define CONTACT_HPP
 
-#include <iostream>
+# include <iostream>
+
+# define DEFAULT "\001\033[0;39m\002"
+#define PINK "\001\033[1;35m\002"
 
 class Contact
 {
