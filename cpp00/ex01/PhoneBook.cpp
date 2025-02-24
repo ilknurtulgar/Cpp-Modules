@@ -6,13 +6,13 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:46:23 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/10 17:25:05 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/15 15:32:39 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-bool isNumber(std::string str)
+bool PhoneBook::isNumber(std::string str)
 {
   unsigned long i = 0;
   int a = 0;
@@ -27,19 +27,17 @@ bool isNumber(std::string str)
    return 1;
 }
 
-int check_identifier(int type, std::string input)
+int PhoneBook::check_identifier(int type, std::string input)
 {    
     if (type == 4)
         return isNumber(input);
     return 1;
 }
 
-int phoneBook::fill_validate(Contact &contact, std::string name, int type)
+int PhoneBook::fill_validate(Contact &contact, std::string name, int type)
 {
     while (1)
     {
-        if(std::cin.eof())
-            break;
         std::string input;
         std::cout << name;
         getline(std::cin, input);
@@ -73,7 +71,7 @@ int phoneBook::fill_validate(Contact &contact, std::string name, int type)
     return 1;
 }
 
-int phoneBook::add()
+int PhoneBook::add()
 {
     Contact newContact;
     if(!fill_validate(newContact, "First Name: ", 1) ||
@@ -89,7 +87,7 @@ int phoneBook::add()
     return 1;
 }
 
-int phoneBook::search()
+int PhoneBook::search()
 {
     if (this->contactCount == 0)
     {
@@ -102,9 +100,9 @@ int phoneBook::search()
     while (i < this->contactCount)
     {
         std::cout << std::setw(10) << i << PINK << "|" << DEFAULT
-                    << std::setw(10) << (person[i].getFirstName().size() > 10 ? person[i].getFirstName().substr(0, 10) + "." : person[i].getFirstName())  << PINK << "|" << DEFAULT
-                    << std::setw(10) << (person[i].getLastName().size() > 10 ? person[i].getLastName().substr(0,10) + "." : person[i].getLastName())  << PINK << "|" << DEFAULT
-                    << std::setw(10) << (person[i].getNickname().size() > 10 ? person[i].getNickname().substr(0, 10) + "." : person[i].getNickname())  << PINK << "|" << DEFAULT << std::endl;
+                    << std::setw(10) << (person[i].getFirstName().size() > 10 ? person[i].getFirstName().substr(0, 9) + "." : person[i].getFirstName())  << PINK << "|" << DEFAULT
+                    << std::setw(10) << (person[i].getLastName().size() > 10 ? person[i].getLastName().substr(0,9) + "." : person[i].getLastName())  << PINK << "|" << DEFAULT
+                    << std::setw(10) << (person[i].getNickname().size() > 10 ? person[i].getNickname().substr(0, 9) + "." : person[i].getNickname())  << PINK << "|" << DEFAULT << std::endl;
         i++;
     }
     while (1)
@@ -137,7 +135,7 @@ int phoneBook::search()
     return 1;
 }
 
-void phoneBook::exit()
+void PhoneBook::exit()
 {
     std::cout << PINK << "Program is terminated. See you <3" << DEFAULT  << std::endl;
    std:: exit(0);

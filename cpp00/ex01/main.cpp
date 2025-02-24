@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 17:24:37 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/10 17:24:47 by itulgar          ###   ########.fr       */
+/*   Created: 2025/02/15 18:37:43 by itulgar           #+#    #+#             */
+/*   Updated: 2025/02/15 18:37:45 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main()
 {
     std::cout << PINK << "~ PhoneBook ~" << DEFAULT << std::endl;
-    phoneBook newPhoneBook;
+    PhoneBook newPhoneBook;
     while(1){
     std::string input;
     std::cout << "Please use ADD, SEARCH, EXIT commands: ";

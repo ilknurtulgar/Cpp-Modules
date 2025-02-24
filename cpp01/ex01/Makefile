@@ -1,16 +1,15 @@
-NAME = account
+NAME = MoarBrainz
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
-
-SRCS= Account.cpp tests.cpp
+SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+		  $(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
