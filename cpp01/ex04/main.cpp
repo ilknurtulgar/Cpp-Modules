@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 18:56:21 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/25 13:35:24 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/25 15:20:52 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,14 @@ bool is_s1(std::string filename,std::string s1)
 {
 	std::ifstream file(filename.c_str());
 	std::string line;
-	std::getline(file,line);
-	while(1)
+	while(std::getline(file,line))
 	{
 		size_t found = line.find(s1);
 		if(found != std::string::npos)
 			return file.close(),true;
-		else if(!line.empty())
-			std::getline(file,line);
-		else 
-			return file.close(),std::cout << "s1 not found! 🦭" << std::endl,false;
 	}
-	return file.close(),false;
+	file.close();
+	return std::cout << "s1 not found in file! 🦭" << std::endl,false;
 }
 
 int replace_std(std::string filename, std::string s1, std::string s2)
@@ -71,7 +67,7 @@ int file_check(std::string filename)
 		std::string line;
 	
 		if(!std::getline(file,line))
-			return std::cout << "File is empty!  🦭" << std::endl,0;
+			return std::cout << "File is empty! 🦭" << std::endl,0;
 		return file.close(),1;
 	}
 	return std::cout << "File error! 🦭" << std::endl,0;
@@ -88,6 +84,8 @@ int main(int argc,char **argv)
 			return 0;
  		std::string s1 = argv[2];
 		std::string s2 = argv[3];
+		if(filename.empty() || s1.empty() || s2.empty())
+			return std::cout << "Any argument cannot be empty! 🦭" << std::endl,0;
 		if(!replace_std(filename,s1,s2))
 			return 0;
 	}
