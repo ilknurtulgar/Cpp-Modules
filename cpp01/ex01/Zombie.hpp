@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:35:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/23 18:55:44 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/26 16:22:05 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 
 class Zombie
 {
-private:
-    std::string name;
-public:
-    Zombie();
-    ~Zombie();
-    void announce(void);
-    void setName(std::string _name);
+	private:
+		std::string name;
+	public:
+		Zombie();
+		~Zombie();
+		void announce(void);
+		void setName(std::string _name);
 };
 
 Zombie* zombieHorde( int N, std::string name );

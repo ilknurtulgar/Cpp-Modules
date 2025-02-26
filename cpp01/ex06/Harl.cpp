@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 15:25:46 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/26 16:21:34 by itulgar          ###   ########.fr       */
+/*   Created: 2025/02/26 16:19:58 by itulgar           #+#    #+#             */
+/*   Updated: 2025/02/26 16:25:36 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#include "Harl.hpp"
 
-#include <iostream>
-
-class Harl
+Harl::Harl()
 {
-	private:
-		void debug(void);
-		void info(void);
-		void warning(void);
-		void error(void);
-	public:
-		Harl();
-		~Harl();
-		void complain( std::string level);
-};
+	std::cout << "Harl is created" << std::endl;
+}
 
+Harl::~Harl()
+{
+	std::cout << "Harl is finished." << std::endl;
+}
 
-#endif
+void Harl::debug(void)
+{
+	
+}

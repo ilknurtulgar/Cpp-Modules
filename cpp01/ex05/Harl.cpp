@@ -6,17 +6,20 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:25:15 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/25 17:14:20 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/26 15:26:09 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-Harl::Harl(std::string lvl) : level(lvl) {}
+Harl::Harl()
+{
+	std::cout << "Harl is started!" << std::endl;
+}
 
 Harl::~Harl()
 {
-	std::cout << "destroyed!" << std::endl;
+	std::cout << "Harl is finished!" << std::endl;
 }
 
 void Harl::debug(void)
@@ -44,5 +47,12 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
 {
+	std::string HarlLanguage[4] = {"DEBUG","INFO","WARNING","ERROR"};
 	
+	void (Harl::*funcType[4])(void) = {&Harl::debug,&Harl::info,&Harl::warning,&Harl::error};
+	for(int i = 0; i < 4; i++){
+		
+		if(level == HarlLanguage[i])
+			return (this->*funcType[i])();
+	}
 }
