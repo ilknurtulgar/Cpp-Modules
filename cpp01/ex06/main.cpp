@@ -12,11 +12,10 @@
 
 #include "Harl.hpp"
 
-int main()
+int main(int argc,char **argv)
 {
+	if(argc != 2)
+		return std::cout << "Invalid number argument! 🦭" << std::endl,0;
 	Harl harl;
-	harl.complain("DEBUG");
-	harl.complain("INFO");
-	harl.complain("WARNING");
-	harl.complain("ERROR");
+	harl.complain(argv[1]);
 }
