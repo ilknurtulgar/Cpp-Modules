@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:21:28 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/20 15:53:43 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/03/03 18:24:04 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,4 @@ Zombie::~Zombie()
 void Zombie::announce(void)
 {
     std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-Zombie* newZombie( std::string name)
-{
-    return new Zombie(name);
 }

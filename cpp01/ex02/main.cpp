@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 14:47:50 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/22 15:50:25 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/03/03 14:47:15 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int main()
 {
     std::string brain = "HI THIS IS BRAIN";
     std::string *stringPTR = &brain;
-    //ref doğrudan değişkenin kendisini temsil eder.
     std::string &stringREF = brain;
 
     std::cout << *stringPTR << std::endl;
