@@ -6,14 +6,14 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 13:34:32 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/25 13:35:16 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:49:05 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef REPLACE_HPP
 # define REPLACE_HPP
 
-#include <iostream>
-#include <fstream>
+# include <iostream>
+# include <fstream>
 
 #endif

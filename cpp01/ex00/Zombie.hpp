@@ -6,19 +6,19 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:19:56 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/26 16:22:11 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:45:51 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
-#include <iostream>
+# include <iostream>
 
 class Zombie
 {
 	private:
-	std::string name;
+		std::string name;
 	public:
 		Zombie(std::string name);
 		~Zombie();

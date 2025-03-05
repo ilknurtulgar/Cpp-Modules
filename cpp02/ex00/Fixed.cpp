@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/05 14:51:03 by itulgar           #+#    #+#             */
+/*   Updated: 2025/03/05 14:51:05 by itulgar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Fixed.hpp"
 
@@ -15,14 +26,14 @@ Fixed::~Fixed()
 Fixed::Fixed(const Fixed& fixed)
 {
     std::cout << "Copy constructor called" << std::endl;
-    this->fixedPoint = fixed.fixedPoint;
+    *this = fixed;
 }
 
 Fixed& Fixed::operator=(const Fixed &fixed)
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if(this != &fixed)
-        this->fixedPoint = fixed.fixedPoint;
+        this->fixedPoint = fixed.getRawBits();
     return *this;
 
 }
@@ -38,4 +49,3 @@ int Fixed::getRawBits(void) const
     std::cout << "getRawBits member function called" << std::endl;
     return this->fixedPoint;
 }
-

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/22 14:47:50 by itulgar           #+#    #+#             */
-/*   Updated: 2025/03/05 14:21:18 by itulgar          ###   ########.fr       */
+/*   Created: 2025/03/05 14:51:27 by itulgar           #+#    #+#             */
+/*   Updated: 2025/03/05 14:52:13 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FIXED_HPP
+# define FIXED_HPP
+
 #include <iostream>
 
-int main()
+class Fixed
 {
-    std::string brain = "HI THIS IS BRAIN";
-    std::string *stringPTR = &brain;
-    std::string &stringREF = brain;
+private:
+	/* data */
+public:
+	Fixed(/* args */);
+	~Fixed();
+};
 
-    std::cout << &brain << std::endl;
-    std::cout << *stringPTR << std::endl;
-    std::cout << &stringREF << std::endl;
-    
-    std::cout << stringPTR << std::endl;
-    std::cout << stringREF << std::endl;
-}
+#endif

@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:25:15 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/26 15:26:09 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:54:33 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void Harl::complain(std::string level)
 	void (Harl::*funcType[4])(void) = {&Harl::debug,&Harl::info,&Harl::warning,&Harl::error};
 	for(int i = 0; i < 4; i++){
 		
-		if(level == HarlLanguage[i])
+		if (level == HarlLanguage[i])
 			return (this->*funcType[i])();
 	}
 }
