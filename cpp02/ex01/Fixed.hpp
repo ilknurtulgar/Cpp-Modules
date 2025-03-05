@@ -14,14 +14,26 @@
 # define FIXED_HPP
 
 #include <iostream>
+#include <cmath> 
 
 class Fixed
 {
-private:
-	/* data */
-public:
-	Fixed(/* args */);
-	~Fixed();
+	private:
+		int fixedPoint;
+		const static int bits = 8;
+	public:
+		Fixed();
+		~Fixed();
+		Fixed(const int i);
+		Fixed(const float f);
+		Fixed(const Fixed& fixed);
+		Fixed& operator = (const Fixed &fixed);
+	
+		float toFloat( void ) const;
+		int toInt( void ) const;
+
 };
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif
