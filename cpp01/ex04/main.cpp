@@ -47,7 +47,9 @@ int replace_std(std::string filename, std::string s1, std::string s2)
 				line = before + s2 + after;
 				found = line.find(s1,found+s2.length());
 			}
-			fileReplace << line << std::endl;
+			fileReplace << line;
+			if(!file.eof())
+				fileReplace << std::endl;
 		}
 		fileReplace.close();
 		file.close();

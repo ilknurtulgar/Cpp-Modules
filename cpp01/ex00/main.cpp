@@ -15,14 +15,14 @@
 int main()
 {
     Zombie zombie("zombie");
+    zombie.announce();
+
     Zombie *zb;
     zb = newZombie("new zombie");
     zb->announce();
     delete zb;
-    zombie.announce();
     
     randomChump("random champ zombie");
-    
 
     return 0;
 }
