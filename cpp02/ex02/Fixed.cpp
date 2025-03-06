@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Fixed.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 14:50:10 by itulgar           #+#    #+#             */
-/*   Updated: 2025/03/05 14:53:04 by itulgar          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Fixed.hpp"
 
 Fixed::Fixed()
@@ -49,7 +37,7 @@ Fixed& Fixed::operator=(const Fixed &fixed)
     return (*this);
 }
 
-int  Fixed::toInt(void) const 
+int Fixed::toInt(void) const
 {
     return (this->fixedPoint >> this->bits);
 }

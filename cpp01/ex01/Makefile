@@ -1,7 +1,11 @@
 NAME = MoarBrainz
+
 CXX = c++
+
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+
 RM = rm -rf
+
 SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 
 OBJS = $(SRCS:.cpp=.o)
