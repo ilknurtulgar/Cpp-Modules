@@ -22,7 +22,7 @@ Fixed::Fixed(const Fixed& fixed)
     *this = fixed;
 }
 
-Fixed& Fixed::operator=(const Fixed &fixed)
+Fixed& Fixed::operator = (const Fixed &fixed)
 {
     if(this != &fixed)
         this->fixedPoint = fixed.fixedPoint;
@@ -134,6 +134,7 @@ Fixed &Fixed::max(Fixed &fixed1, Fixed &fixed2)
         return fixed1;
     return fixed2;
 }
+
 const Fixed &Fixed::min(const Fixed &fixed1, const Fixed &fixed2)
 {
     if(fixed1.toFloat() <= fixed2.toFloat())

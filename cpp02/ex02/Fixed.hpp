@@ -31,10 +31,8 @@ public:
     float operator * (const Fixed &fixed);
     float operator / (const Fixed &fixed);
 
-    //prefix ++a
     Fixed& operator ++ ();
     Fixed& operator -- ();
-    //posfix
     Fixed operator ++ (int);
     Fixed operator -- (int);
 
