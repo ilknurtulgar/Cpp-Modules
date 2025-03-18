@@ -3,13 +3,15 @@
 int main()
 {
     ClapTrap clap("Clapclap");
-    clap.attack("clap enemy");
+    clap.attack("enemy");
     clap.takeDamage(5);
     clap.beRepaired(3);
 
-    std::cout << "🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️🧝‍♀️" << std::endl;
+    std::cout << std::endl;
+    std::cout << "🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢"<< std::endl << std::endl;
+
 
     ScavTrap scav("Scavscav");
-    scav.attack("scav enemy");
+    scav.attack("enemy");
     scav.guardGate();
 }
