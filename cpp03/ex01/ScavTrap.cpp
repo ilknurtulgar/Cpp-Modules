@@ -39,11 +39,11 @@ void ScavTrap::attack(const std::string& target)
 {
     if(this->energyPoints > 0 && this->hitPoints > 0)
     {
-        std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing "
+        std::cout << "ScavTrap " << this->name << " attacks " << target << ", causing "
 					<< this->attackDamage << " points of damage! 🪩" << std::endl;
         this->energyPoints--;
     }else
-        std::cout << "ClapTrap " << this->name << " could not damage" << target << ", causing "
+        std::cout << "ScavTrap " << this->name << " could not damage" << target << ", causing "
                                 << this->attackDamage << "because of it has no attack damage! 🪩" << std::endl;
 }
 

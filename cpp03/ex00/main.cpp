@@ -10,8 +10,5 @@ int main()
     soldier2.attack("Enemy");
     soldier2.takeDamage(3);
     soldier2.beRepaired(2);
-    soldier2.attack("Enemy");
-    soldier2.takeDamage(100);
-    soldier2.beRepaired(2);
-    soldier2.attack("Enemy");
+
 }

@@ -2,7 +2,7 @@
 
 int main()
 {
-    ClapTrap clap("Clapclap");
+    ClapTrap clap("ilkkus");
     clap.attack("enemy");
     clap.takeDamage(5);
     clap.beRepaired(3);
@@ -11,7 +11,7 @@ int main()
     std::cout << "🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢🦢"<< std::endl << std::endl;
 
 
-    ScavTrap scav("Scavscav");
+    ScavTrap scav("rachel");
     scav.attack("enemy");
     scav.guardGate();
 }
