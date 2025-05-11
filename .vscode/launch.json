@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/ilknurtulgar/Desktop/cpp/cpp01/ex06",
-      "program": "/Users/ilknurtulgar/Desktop/cpp/cpp01/ex06/build/Debug/outDebug"
+      "cwd": "/Users/ilknurtulgar/Desktop/42/cpp",
+      "program": "/Users/ilknurtulgar/Desktop/42/cpp/build/Debug/outDebug"
     }
   ]
 }
