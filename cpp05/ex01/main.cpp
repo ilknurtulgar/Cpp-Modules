@@ -16,8 +16,11 @@ int main()
 {
 	try
 	{
-		Form form1 = Form("basic",140,140);
+		Form form1 = Form("basic", 100, 150);
+		Bureaucrat a = Bureaucrat("john",140);
 		a.signForm(form1);
+		Form ff(form1);
+		std::cout << ff.getIsSign()<< "\n";
 	}
 	catch(const std::exception& e)
 	{
