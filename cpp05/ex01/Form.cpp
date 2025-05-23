@@ -6,23 +6,24 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:37:48 by itulgar           #+#    #+#             */
-/*   Updated: 2025/05/05 15:44:03 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/05/23 14:23:33 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 Form::Form() : name("none"), signGrade(0),executeGrade(0)
-{}
+{
+	std::cout << "default constructor called" << std::endl;
+}
 
 Form::Form(const std::string _name, int _signGrade, int _executeGrade) : name(_name), signGrade(_signGrade), executeGrade(_executeGrade)
 {
 	this->isSign = false;
-
 	if (signGrade < 1 || executeGrade < 1)
-		throw Bureaucrat::GradeTooLowException();
+		throw Bureaucrat::GradeTooHighException();
 	else if(signGrade > 150 || executeGrade > 150)
-		throw Bureaucrat::GradeTooHighException();	
+		throw Bureaucrat::GradeTooLowException();	
 
 }
 

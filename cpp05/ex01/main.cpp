@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 14:24:00 by itulgar           #+#    #+#             */
-/*   Updated: 2025/05/05 15:37:44 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/05/23 14:40:47 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,34 @@ int main()
 {
 	try
 	{
-		Form form1 = Form("basic", 100, 150);
-		Bureaucrat a = Bureaucrat("john",140);
-		a.signForm(form1);
-		Form ff(form1);
-		std::cout << ff.getIsSign()<< "\n";
+		Bureaucrat alice("Alice",50);
+		Bureaucrat bob("Bob",10);
+
+		Form taxform("tax declaration",30,5);
+		
+		std::cout << taxform << std::endl;
+		
+		std::cout << "alice tries to sign the form: " << std::endl;
+		alice.signForm(taxform);
+		std::cout << "form after signing: " << std::endl;
+		std::cout << taxform << std::endl;
+		
+		std::cout << "---------------------------------------" << std::endl;
+		
+		std::cout << "form after signing: " << std::endl;
+		std::cout << taxform << std::endl;
+		
+		std::cout << "bob tries to sign the form: " << std::endl;
+		bob.signForm(taxform);
+		
+		std::cout << "form after signing: " << std::endl;
+		std::cout << taxform << std::endl;
+	
+		
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << "Error: " << e.what() << '\n';
 	}
 	return 0;
-	
 }

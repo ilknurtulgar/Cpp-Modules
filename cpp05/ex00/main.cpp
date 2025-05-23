@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 14:24:00 by itulgar           #+#    #+#             */
-/*   Updated: 2025/05/05 15:37:28 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/05/23 14:15:05 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,29 @@ int main()
 {
 	try
 	{
+		// Bureaucrat bure;
+		// std::cout << bure << std::endl;
+		// bure.gradeDecrement();
+		// std::cout << bure << std::endl;
+		
 		Bureaucrat bureaucratOne("İlknur",0);
-		Bureaucrat bureaucratOne("istanbul",160);
+		
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "error: " << e.what() << '\n';
+	}
+
+	try
+	{
+		Bureaucrat bureaucratTwo("istanbul",160);
 
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << "error: " << e.what() << '\n';
 	}
+	
 	return 0;
 	
 }

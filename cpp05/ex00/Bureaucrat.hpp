@@ -6,14 +6,14 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 14:23:55 by itulgar           #+#    #+#             */
-/*   Updated: 2025/05/02 17:33:04 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/05/23 11:44:34 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include <iostream>
+#include <iostream>
 
 class Bureaucrat
 {
