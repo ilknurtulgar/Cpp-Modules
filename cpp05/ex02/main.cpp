@@ -10,4 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include 
+#include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+
+int main(){
+    Bureaucrat bob("bob",1);
+    ShrubberyCreationForm form("home");
+
+    try
+    {
+        bob.signForm(form);
+        bob.executeForm(form);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+}
