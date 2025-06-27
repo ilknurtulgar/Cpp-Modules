@@ -7,8 +7,20 @@
 
 int main()
 {
-    Intern someRandomIntern;
-    AForm* rrf;
-    rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+    try
+    {
+        Intern someRandomIntern;
+        AForm* rrf;
+        Bureaucrat b1("bob",1);
 
+        rrf = someRandomIntern.makeForm("robotomy request", "tree");
+        b1.signForm(*rrf);
+        b1.executeForm(*rrf);
+
+        delete rrf;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 }
