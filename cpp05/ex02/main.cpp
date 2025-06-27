@@ -17,13 +17,19 @@
 #include "PresidentialPardonForm.hpp"
 
 int main(){
-    Bureaucrat bob("bob",1);
-    ShrubberyCreationForm form("home");
+    // Bureaucrat bob("bob",1);
+    // ShrubberyCreationForm form("home");
+
+    Bureaucrat emma("emma",3);
+    RobotomyRequestForm robotForm("robot");
 
     try
     {
-        bob.signForm(form);
-        bob.executeForm(form);
+        // bob.signForm(form);
+        // bob.executeForm(form);
+
+        emma.signForm(robotForm);
+        emma.executeForm(robotForm);
     }
     catch(const std::exception& e)
     {

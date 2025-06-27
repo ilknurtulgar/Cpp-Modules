@@ -11,3 +11,34 @@
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequestForm",72,45), target(target){}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other){
+    *this = other;
+}
+
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other){
+    if (this != &other)
+        AForm::operator=(other);
+    this->target = other.target;
+    return *this;
+}
+
+RobotomyRequestForm::~RobotomyRequestForm(){}
+
+std::string RobotomyRequestForm::getTarget() const {
+    return this->target;
+}
+
+void RobotomyRequestForm::action(void) const {
+    std::cout << "drilling noises..." << std::endl;
+
+    std::srand(std::time(NULL));
+
+    if(std::rand() % 2 == 0)
+        std::cout << getTarget() << " has been robotomized successfully!" << std::endl;
+    else
+        std::cout << "Robotomy of " << getTarget() << " failed!" << std::endl;
+
+}

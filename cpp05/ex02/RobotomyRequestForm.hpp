@@ -13,15 +13,20 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
-# include <iostream>
+# include "AForm.hpp"
+# include <cstdlib>
 
-class RobotomyRequestForm
+class RobotomyRequestForm : public AForm
 {
-private:
-	/* data */
-public:
-	RobotomyRequestForm();
-	~RobotomyRequestForm();
+	private:
+		std::string target;
+		void action(void) const;
+	public:
+		RobotomyRequestForm(const std::string &target);
+		RobotomyRequestForm(const RobotomyRequestForm &other);
+		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
+		~RobotomyRequestForm();
+		std::string getTarget() const;
 };
 
 
