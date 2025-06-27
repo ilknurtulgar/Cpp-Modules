@@ -13,15 +13,22 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
 # define PRESIDENTIALPARDONFORM_HPP
 
+# include "AForm.hpp"
 # include <iostream>
 
-class PresidentialPardonForm
+class PresidentialPardonForm : public AForm
 {
-private:
-	/* data */
-public:
-	PresidentialPardonForm();
-	~PresidentialPardonForm();
+	private:
+		std::string target;
+		void action(void) const;
+	public:
+		PresidentialPardonForm();
+		PresidentialPardonForm(const std::string &target);
+		PresidentialPardonForm(const PresidentialPardonForm &other);
+		PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
+		~PresidentialPardonForm();
+
+		std::string getTarget() const;
 };
 
 

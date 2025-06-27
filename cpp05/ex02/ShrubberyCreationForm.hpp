@@ -23,10 +23,12 @@ class ShrubberyCreationForm : public AForm
 		void action(void)const;
 
 	public:
+		ShrubberyCreationForm();
 		ShrubberyCreationForm(const std::string &target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &other);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 		~ShrubberyCreationForm();
+		
 		std::string getTarget() const;
 
 };

@@ -12,7 +12,13 @@
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm",145,137),target(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm",145,137),target("default") {
+	std::cout << "default constructor called" << std::endl;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm",145,137),target(target) {
+    std::cout << getTarget() << " sign 145, execute 137" << std::endl;
+}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other){
     *this = other;

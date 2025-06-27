@@ -22,10 +22,12 @@ class RobotomyRequestForm : public AForm
 		std::string target;
 		void action(void) const;
 	public:
+		RobotomyRequestForm();
 		RobotomyRequestForm(const std::string &target);
 		RobotomyRequestForm(const RobotomyRequestForm &other);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 		~RobotomyRequestForm();
+		
 		std::string getTarget() const;
 };
 
