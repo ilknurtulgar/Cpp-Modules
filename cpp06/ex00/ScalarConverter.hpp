@@ -5,9 +5,9 @@
 # include <string>
 # include <cctype>
 #include <iomanip>
+#include <sstream>
 
-
-
+#define NON 2
 class ScalarConverter
 {
     private:
@@ -19,7 +19,12 @@ class ScalarConverter
         ScalarConverter(const ScalarConverter& other);
         ScalarConverter& operator=(const ScalarConverter& other);
         ~ScalarConverter();
-       
+        static double stod(const std::string& literal);
+        void printConvert();
+        class InvalidArgumentException : public std::exception{
+            const char* what() const throw();
+        };
+
     public:
         static void convert(const std::string& literal);
 };
