@@ -8,6 +8,14 @@
 #include <sstream>
 
 #define NON 2
+
+enum LiteralType {
+    FLOAT,
+    INT,
+    DOUBLE,
+    SPECIAL
+};
+
 class ScalarConverter
 {
     private:
@@ -19,8 +27,16 @@ class ScalarConverter
         ScalarConverter(const ScalarConverter& other);
         ScalarConverter& operator=(const ScalarConverter& other);
         ~ScalarConverter();
+
+
         static double stod(const std::string& literal);
-        void printConvert();
+        static float stof(const std::string& literal);
+        static int stoi(const std::string& literal);
+        static void char_print();
+        static LiteralType whichLiteralType(const std::string& literal);
+        static bool isInt(const std::string& literal);
+        static bool isFloat(const std::string& literal);
+
         class InvalidArgumentException : public std::exception{
             const char* what() const throw();
         };
