@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 15:47:20 by itulgar           #+#    #+#             */
-/*   Updated: 2025/07/13 15:47:22 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/07/14 19:55:53 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ bool ScalarConverter::isFloat(const std::string& literal){
     return false;
 }
 
+bool ScalarConverter::isDouble(const std::string& literal){
+	if(ScalarConverter::stod(literal))
+		return true;
+	return false;
+}
+
 LiteralType ScalarConverter::whichLiteralType(const std::string& literal)
 {
 
@@ -56,8 +62,9 @@ LiteralType ScalarConverter::whichLiteralType(const std::string& literal)
         return INT;
     }else if (isFloat(literal)){
             return FLOAT;
-    }
-    return DOUBLE;
+    } else if (isDouble(literal))
+		return DOUBLE;
+    return RANDOM;
 }
 
 double ScalarConverter::stod(const std::string& literal){
@@ -95,15 +102,47 @@ const char* ScalarConverter::InvalidArgumentException::what() const throw(){
     return "Invalid argument format";
 }
 
-void ScalarConverter::char_print(){
-    std::cout << "char: '" << c << "'" << std::endl;
+void ScalarConverter::print(){
+	if(c == NON)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+    	std::cout << "char: '" << c << "'" << std::endl;
     std::cout << "int: " << i << std::endl;
     std::cout << "float: " << f << ".0f" << std::endl;
     std::cout << "double: " << d << ".0" << std::endl;
 }
 
+void ScalarConverter::special_check_print_f(){
+	
+	if(std::isnan(f)){
+			std::cout << "float: nanf" << std::endl;
+	}
+		else if(f == std::numeric_limits<float>::infinity())
+			std::cout << "float: +inff" << std::endl;
+		else
+			std::cout << "float: -inff" << std::endl;
+			
+}
+
+void ScalarConverter::special_check_print_d(){
+	
+	if(std::isnan(d))
+			std::cout << "double: nan" << std::endl;
+		else if(d == std::numeric_limits<double>::infinity())
+			std::cout << "double: +inf" << std::endl;
+		else
+			std::cout << "double: -inf" << std::endl;
+			
+}
+
 void ScalarConverter::special_print(){
+	
 	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	if(f)
+		special_check_print_f();
+	special_check_print_d();
+	
 }
 
 void ScalarConverter::convert(const std::string& literal){
@@ -113,8 +152,7 @@ void ScalarConverter::convert(const std::string& literal){
         i = static_cast<int>(c);
         f = static_cast<float>(c);
         d = static_cast<double>(c);
-        char_print();
-        return;
+		print();
     } else
     {
         try
@@ -123,7 +161,6 @@ void ScalarConverter::convert(const std::string& literal){
             switch (type)
             {
             case SPECIAL:
-                //c,i = 0 impossible
                 c = 0;
                 i = 0;
                 
@@ -140,19 +177,17 @@ void ScalarConverter::convert(const std::string& literal){
                     d = -std::numeric_limits<double>::infinity();
                 }
 				special_print();
-                break;
+				return;
             case INT:
             i = ScalarConverter::stoi(literal);
-            c = static_cast<char>(i);
+            if(i < 32 || i > 126)
+                c = NON;
+			else
+            	c = static_cast<char>(i);
             f = static_cast<float>(i);
             d = static_cast<double>(i);
-            // if(literal[0] == '0')
-            //     c = NON;
-            //     else
-            //         c = static_cast<char>(d);
                 break;
             case FLOAT:
-				std::cout << "here" << std::endl;
                 f = ScalarConverter::stof(literal);
                 c = static_cast<char>(f);
                 i = static_cast<int>(f);
@@ -165,6 +200,7 @@ void ScalarConverter::convert(const std::string& literal){
                 f = static_cast<float>(d);                
                 break;
             }
+			print();
         }
         catch(const std::exception& e)
         {
@@ -176,9 +212,4 @@ void ScalarConverter::convert(const std::string& literal){
         }
         
     }
-    
-    std::cout << "char: " << c << std::endl;
-    std::cout << "int: " << i << std::endl;
-    std::cout << "float: " << f << std::endl;  
-    std::cout << "double: " << d << std::endl;
 }

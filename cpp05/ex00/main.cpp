@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 14:24:00 by itulgar           #+#    #+#             */
-/*   Updated: 2025/05/23 14:15:05 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/07/14 20:14:50 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main()
 {
 	try
 	{
+		
 		// Bureaucrat bure;
 		// std::cout << bure << std::endl;
 		// bure.gradeDecrement();
