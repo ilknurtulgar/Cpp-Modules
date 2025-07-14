@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/13 15:47:20 by itulgar           #+#    #+#             */
+/*   Updated: 2025/07/13 15:47:22 by itulgar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScalarConverter.hpp"
 
 char ScalarConverter::c = 0;
@@ -26,7 +38,7 @@ bool ScalarConverter::isInt(const std::string& literal){
 }
 
 bool ScalarConverter::isFloat(const std::string& literal){
-    if(literal.back() == 'f')
+    if(literal[literal.size() - 1] == 'f')
         return true;
     return false;
 }
@@ -71,8 +83,7 @@ int ScalarConverter::stoi(const std::string& literal)
 float ScalarConverter::stof(const std::string& literal)
 {
     float f;
-    std::string tmp = literal;
-    tmp.pop_back();
+    std::string tmp = literal.substr(0,literal.size() - 1);
     std::stringstream ss(tmp);
     if (ss >> f && ss.eof())
         return f;
@@ -89,6 +100,10 @@ void ScalarConverter::char_print(){
     std::cout << "int: " << i << std::endl;
     std::cout << "float: " << f << ".0f" << std::endl;
     std::cout << "double: " << d << ".0" << std::endl;
+}
+
+void ScalarConverter::special_print(){
+	std::cout << "char: impossible" << std::endl;
 }
 
 void ScalarConverter::convert(const std::string& literal){
@@ -113,8 +128,8 @@ void ScalarConverter::convert(const std::string& literal){
                 i = 0;
                 
                 if(literal == "nan" || literal == "nanf"){
-                    f = std::nanf("");
-                    d = std::nan("");
+                    f = nanf("");
+                    d = nan("");
                     
                 } else if(literal == "+inf" || literal == "+inff"){
                     f = std::numeric_limits<float>::infinity();
@@ -124,6 +139,7 @@ void ScalarConverter::convert(const std::string& literal){
                     f = -std::numeric_limits<float>::infinity();
                     d = -std::numeric_limits<double>::infinity();
                 }
+				special_print();
                 break;
             case INT:
             i = ScalarConverter::stoi(literal);
@@ -136,6 +152,7 @@ void ScalarConverter::convert(const std::string& literal){
             //         c = static_cast<char>(d);
                 break;
             case FLOAT:
+				std::cout << "here" << std::endl;
                 f = ScalarConverter::stof(literal);
                 c = static_cast<char>(f);
                 i = static_cast<int>(f);
@@ -160,8 +177,8 @@ void ScalarConverter::convert(const std::string& literal){
         
     }
     
-    // std::cout << "char: " << c << std::endl;
-    // std::cout << "int: " << i << std::endl;
-    // std::cout << "float: " << f << std::endl;  
-    // std::cout << "double: " << d << std::endl;
+    std::cout << "char: " << c << std::endl;
+    std::cout << "int: " << i << std::endl;
+    std::cout << "float: " << f << std::endl;  
+    std::cout << "double: " << d << std::endl;
 }

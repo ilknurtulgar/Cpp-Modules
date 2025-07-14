@@ -1,11 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/13 15:47:29 by itulgar           #+#    #+#             */
+/*   Updated: 2025/07/13 15:47:30 by itulgar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
 # include <string>
 # include <cctype>
-#include <iomanip>
-#include <sstream>
+# include <iomanip>
+# include <sstream>
+# include <cmath>
+# include <limits>
 
 #define NON 2
 
@@ -33,6 +47,7 @@ class ScalarConverter
         static float stof(const std::string& literal);
         static int stoi(const std::string& literal);
         static void char_print();
+		static void special_print();
         static LiteralType whichLiteralType(const std::string& literal);
         static bool isInt(const std::string& literal);
         static bool isFloat(const std::string& literal);
