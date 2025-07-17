@@ -12,7 +12,7 @@
 
 #include "AForm.hpp"
 
-AForm::AForm() : name("none"), signGrade(0),executeGrade(0)
+AForm::AForm() : name("none"), signGrade(150),executeGrade(150), isSign(false)
 {
 	std::cout << "default constructor called" << std::endl;
 }
