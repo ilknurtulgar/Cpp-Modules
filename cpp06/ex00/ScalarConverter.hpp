@@ -50,6 +50,7 @@ class ScalarConverter
         static LiteralType whichLiteralType(const std::string& literal);
         static bool isInt(const std::string& literal);
         static bool isFloat(const std::string& literal);
+        static bool isDouble(const std::string& literal);
 	
 		static void special_print();
 		static void special_check_print_f();

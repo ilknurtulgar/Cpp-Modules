@@ -32,8 +32,16 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter&  other){
 ScalarConverter::~ScalarConverter(){}
 
 bool ScalarConverter::isInt(const std::string& literal){
-    if(literal.find('.') == std::string::npos && literal.find('f') == std::string::npos)
+    if(literal.find('.') == std::string::npos && literal.find('f') == std::string::npos){
+        for (size_t i = 0; i >= literal.size(); i++)
+        {
+            if (literal[0] == '-' || literal[0] == '+')
+                    i++;
+            if(!isdigit(literal[i]))
+                    return false;
+        }
         return true;
+    }
     return false;
 }
 
@@ -103,13 +111,7 @@ const char* ScalarConverter::InvalidArgumentException::what() const throw(){
 }
 
 void ScalarConverter::print(){
-	if(c == NON)
-		std::cout << "char: Non displayable" << std::endl;
-	else
-    	std::cout << "char: '" << c << "'" << std::endl;
-    std::cout << "int: " << i << std::endl;
-    std::cout << "float: " << f << ".0f" << std::endl;
-    std::cout << "double: " << d << ".0" << std::endl;
+
 }
 
 void ScalarConverter::special_check_print_f(){
@@ -157,7 +159,7 @@ void ScalarConverter::convert(const std::string& literal){
     {
         try
         {
-             LiteralType type = whichLiteralType(literal);
+            LiteralType type = whichLiteralType(literal);
             switch (type)
             {
             case SPECIAL:
@@ -199,8 +201,27 @@ void ScalarConverter::convert(const std::string& literal){
                 i = static_cast<int>(d);
                 f = static_cast<float>(d);                
                 break;
+            case RANDOM:
+                std::cout << "char: impossible" << std::endl;
+                std::cout << "int: impossible" << std::endl;
+                std::cout << "float: impossible" << std::endl;
+                std::cout << "double: impossible" << std::endl;
+                return;
             }
-			print();
+		if(c == NON)
+		    std::cout << "char: Non displayable" << std::endl;
+	    else
+    	std::cout << "char: '" << c << "'" << std::endl;
+      if(literal.find('.') != std::string::npos)
+            std::cout << "double: " << d << ".0" << std::endl;
+        else
+            std::cout << "double: " << d << std::endl;
+          if(tmp.find('.') != std::string::npos)
+            std::cout << "float: " << f << "f" << std::endl;
+        else
+            std::cout << "float: " << f << ".0f" << std::endl;
+    
+    std::cout << "int: " << i << std::endl;
         }
         catch(const std::exception& e)
         {
