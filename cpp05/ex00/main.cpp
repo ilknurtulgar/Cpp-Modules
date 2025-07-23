@@ -20,8 +20,7 @@ int main()
 		// Bureaucrat bure;
 		// std::cout << bure << std::endl;
 		// bure.gradeDecrement();
-		// std::cout << bure << std::endl;
-		
+
 		Bureaucrat bureaucratOne("İlknur",0);
 		
 	}

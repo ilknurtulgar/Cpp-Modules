@@ -12,7 +12,7 @@
 
 #include "Form.hpp"
 
-Form::Form() : name("none"), signGrade(150),executeGrade(150), isSign(false)
+Form::Form() : name("none"), isSign(false), signGrade(150),executeGrade(150)
 {
 	std::cout << "default constructor called" << std::endl;
 }
@@ -40,8 +40,7 @@ Form& Form::operator=(const Form& other)
 	return *this;	
 }
 
-Form::~Form()
-{}
+Form::~Form(){}
 
 void Form::beSigned(const Bureaucrat& bureaucrat)
 {

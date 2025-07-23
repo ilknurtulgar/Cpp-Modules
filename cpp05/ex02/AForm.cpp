@@ -12,7 +12,7 @@
 
 #include "AForm.hpp"
 
-AForm::AForm() : name("none"), signGrade(150),executeGrade(150), isSign(false)
+AForm::AForm() : name("none"),isSign(false), signGrade(150),executeGrade(150) 
 {
 	std::cout << "default constructor called" << std::endl;
 }
@@ -45,6 +45,7 @@ AForm::~AForm()
 
 void AForm::beSigned(const Bureaucrat& bureaucrat)
 {
+	
 	if(bureaucrat.getGrade() > signGrade)
 		throw GradeTooLowException();
 	isSign = true;
