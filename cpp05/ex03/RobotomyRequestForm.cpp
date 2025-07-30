@@ -6,11 +6,13 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:52:52 by itulgar           #+#    #+#             */
-/*   Updated: 2025/06/18 17:52:59 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/07/30 15:27:13 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include <ctime>
+#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm",72,45), target("default") {
     std::cout << "default constructor called" << std::endl;

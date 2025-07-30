@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:36:29 by itulgar           #+#    #+#             */
-/*   Updated: 2025/06/18 17:43:01 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/07/30 15:24:46 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main()
     std::cout << "------------------" << std::endl;
     std::cout << "Presidential Pardon Form" << std::endl;
 
-    Bureaucrat monica("monica",5);
+    Bureaucrat monica("monica",4);
     PresidentialPardonForm pardonForm("pardon");
 
     try

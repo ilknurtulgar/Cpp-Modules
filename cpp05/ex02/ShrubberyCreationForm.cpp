@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:49:11 by itulgar           #+#    #+#             */
-/*   Updated: 2025/06/18 17:49:21 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/07/30 14:56:41 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
 void ShrubberyCreationForm::action(void)const
 {
-    std::ofstream file(getTarget() + "_shrubbery");
+    std::ofstream file((getTarget() + "_shrubbery").c_str());
     if(!file)
         return;
     

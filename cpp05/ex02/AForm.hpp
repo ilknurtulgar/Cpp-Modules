@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:41:37 by itulgar           #+#    #+#             */
-/*   Updated: 2025/06/18 18:35:46 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/07/30 15:04:40 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define AFORM_HPP
 
 #include "Bureaucrat.hpp"
+# include <iostream>
+
 
 class Bureaucrat;
 

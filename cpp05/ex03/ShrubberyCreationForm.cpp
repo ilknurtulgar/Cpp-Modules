@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 17:49:11 by itulgar           #+#    #+#             */
-/*   Updated: 2025/06/18 17:49:21 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/07/30 15:45:13 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm(
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other){
-    *this = other;
+	*this = other;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other){
-    if (this != &other)
+	if (this != &other)
         AForm::operator=(other);
-    
     this->target = other.target;
     return *this;
 }
@@ -41,7 +40,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
 void ShrubberyCreationForm::action(void)const
 {
-    std::ofstream file(getTarget() + "_shrubbery");
+    std::ofstream file((getTarget() + "_shrubbery").c_str());
     if(!file)
         return;
     
