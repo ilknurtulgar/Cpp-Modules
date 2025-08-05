@@ -12,6 +12,19 @@
 
 #include "ScalarConverter.hpp"
 
+ScalarConverter::ScalarConverter(){}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& other){
+	*this = other;
+}
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other){
+	(void)other;
+	return *this;
+}
+
+ScalarConverter::~ScalarConverter(){}
+
 void ScalarConverter::convert(const std::string& literal){
 	
 	char c = 0;
@@ -25,92 +38,66 @@ void ScalarConverter::convert(const std::string& literal){
         f = static_cast<float>(c);
         d = static_cast<double>(c);
 		
-		std::cout << "char: " << c << std::endl;
+		std::cout << "char: '" << c << "'" << std::endl;
 		std::cout << "int: " << i << std::endl;
-		std::cout << "float: " << f << std::endl;
-		std::cout << "double: " << d << std::endl;
+		std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+		std::cout << "double: " <<  std::fixed << std::setprecision(1) << d << std::endl;		
+		return;
 		
-    } else{
+    } else if (literal == "nan" || literal == "nanf" || 
+			literal == "+inf" || literal == "-inf" || 
+			literal == "+inff" || literal == "-inff"){
 		
-		LiteralType type;
-		std::string literalType[6] = {"nan","nanf","+inf","-inf","+inff","-inff"};
-		
-		for (int i = 0; i < 6; i++)
-		{
-			if(literal == literalType[i])
-				type = SPECIAL;
-		}
-		if (literal.find('.') == std::string::npos && literal.find('f') == std::string::npos){
-			 for (size_t i = 0; i >= literal.size(); i++)
-			{
-				if (literal[0] == '-' || literal[0] == '+')
-						i++;
-				if(isdigit(literal[i]))
-						type = INT;
-			}
-		}else if (literal[literal.size() - 1] == 'f')
-				type = FLOAT;
-		 else if (literal.find('.') == std::string::npos)
-		 //buraya bisey dusun
-			type = DOUBLE;
-		else
-			type = RANDOM;
-		
-		switch (type)
-		{
-		case SPECIAL:
+
 			std::cout << "char: impossible" << std::endl;
 			std::cout << "int: impossible" << std::endl;
-			
-			if(literal == "nan" || literal == "nanf"){
-				std::cout << "float: nan" << std::endl;
-				std::cout << "double: nanf" << std::endl;
-			} else if(literal == "+inf" || literal == "+inff"){
+
+			if (literal == "nan" || literal == "nanf") {
+				std::cout << "float: nanf" << std::endl;
+				std::cout << "double: nan" << std::endl;
+
+			} else if (literal == "+inf" || literal == "+inff") {
 				std::cout << "float: +inff" << std::endl;
 				std::cout << "double: +inf" << std::endl;
-			} else if(literal == "-inf" || literal == "-inff"){
+
+			} else if (literal == "-inf" || literal == "-inff") {
 				std::cout << "float: -inff" << std::endl;
 				std::cout << "double: -inf" << std::endl;
 			}
-			break;
-			
-		case INT:
-		  	std::stringstream ss(literal);
-		  	ss >> i;
-		  	if(i < 32 || i > 126)
-                c = NON;
-			else
-            	c = static_cast<char>(i);
-				f = static_cast<float>(i);
-            	d = static_cast<double>(i);
-			break;
-		
-		case FLOAT:
-			std::string tmp = literal.substr(0,literal.size() - 1);
-    		std::stringstream ss(tmp);
-			ss >> f;
-            c = static_cast<char>(f);
-            i = static_cast<int>(f);
-            d = static_cast<double>(f);
-		break;
-		
-		case DOUBLE:
-		 	std::stringstream ss(literal);
-			ss >> d;
-            c = static_cast<char>(d);
-            i = static_cast<int>(d);
-            f = static_cast<float>(d);
-			break;
-			
-		case RANDOM:
-			std::cout << "char: impossible" << std::endl;
-            std::cout << "int: impossible" << std::endl;
-            std::cout << "float: impossible" << std::endl;
-            std::cout << "double: impossible" << std::endl;
-			break;
-		}
-		
+			return;
+
+	} 
+	
+	std::string clean = literal;
+
+	if(clean[clean.length() - 1] == 'f')
+		clean = clean.substr(0,clean.length() - 1);
+
+	std::stringstream ss(clean);
+	ss >> d;
+
+	if(ss.fail()){
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+		return;
 	}
 	
-	
+	i = static_cast<int>(d);
+	f = static_cast<int>(d);
+	c = static_cast<int>(i);
+
+	if(d < 0 || d > 127)
+		std::cout << "char: impossible" << std::endl;
+	else if(!isprint(c))
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << c << "'" << std::endl;
+			
+	std::cout << "int: " << i << std::endl;
+
+	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+	std::cout << "double: " <<  std::fixed << std::setprecision(1) << d << std::endl;		
 }
+	

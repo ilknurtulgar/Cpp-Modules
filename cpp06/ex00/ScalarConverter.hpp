@@ -21,15 +21,6 @@
 # include <cmath>
 # include <limits>
 
-#define NON 2
-
-enum LiteralType {
-    FLOAT,
-    INT,
-    DOUBLE,
-    SPECIAL,
-	RANDOM
-};
 
 class ScalarConverter
 {
