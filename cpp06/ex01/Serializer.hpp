@@ -15,15 +15,21 @@
 
 # include <iostream>
 
+struct Data {
+	int i;
+	char c;
+};
+
 class Serializer
 {
 	private:
-		/* data */
-	public:
 		Serializer();
 		Serializer(const Serializer& other);
 		Serializer& operator=(const Serializer& other);
 		~Serializer();
+	public:
+		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
 };
 
 

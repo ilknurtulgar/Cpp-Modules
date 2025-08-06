@@ -76,7 +76,7 @@ void ScalarConverter::convert(const std::string& literal){
 	std::stringstream ss(clean);
 	ss >> d;
 
-	if(ss.fail()){
+	if(ss.fail() || !ss.eof()){
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
 		std::cout << "float: impossible" << std::endl;
@@ -84,20 +84,18 @@ void ScalarConverter::convert(const std::string& literal){
 		return;
 	}
 	
-	i = static_cast<int>(d);
-	f = static_cast<int>(d);
-	c = static_cast<int>(i);
-
 	if(d < 0 || d > 127)
 		std::cout << "char: impossible" << std::endl;
-	else if(!isprint(c))
+	else if(!isprint(static_cast<char>(d)))
 		std::cout << "char: Non displayable" << std::endl;
 	else
-		std::cout << "char: '" << c << "'" << std::endl;
-			
-	std::cout << "int: " << i << std::endl;
-
-	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
-	std::cout << "double: " <<  std::fixed << std::setprecision(1) << d << std::endl;		
-}
+		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;	
 	
+	if(d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX))
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(d) << std::endl;
+
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<double>(d) << "f" << std::endl;
+	std::cout << "double: "  <<  static_cast<double>(d) << std::endl;	
+}
