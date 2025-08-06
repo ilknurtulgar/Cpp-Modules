@@ -26,9 +26,9 @@ int main()
     Data* deserializes = Serializer::deserialize(raw); 
 
     if(dataGlass == deserializes)
-        std::cout << "Pointers are same" << std::endl;
+        std::cout << "Pointers are same 🪩" << std::endl;
     else
-        std::cout << "Pointers are different" << std::endl;
+        std::cout << "Pointers are different 🤯" << std::endl;
 
     std::cout << "dataglass->i : " << dataGlass->i << std::endl;
     std::cout << "dataglass->c : " << dataGlass->c << std::endl;
