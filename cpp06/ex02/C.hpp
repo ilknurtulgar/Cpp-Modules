@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:29:49 by itulgar           #+#    #+#             */
-/*   Updated: 2025/07/14 15:31:22 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/08/07 16:30:04 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 # include <iostream>
 # include "Base.hpp"
 
-class C : Base
-{
-	private:
-		/* data */
-	public:
-		C();
-		~C();
-};
+class C : public Base {};
 
 #endif
