@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:25:54 by itulgar           #+#    #+#             */
-/*   Updated: 2025/08/07 16:52:54 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/08/07 18:26:50 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,15 @@ Base* generate(void){
 
 void identify(Base* p){
 
-	if(dynamic_cast<A*>(p))
+	A* a = dynamic_cast<A*>(p);
+	B* b = dynamic_cast<B*>(p);
+	C* c = dynamic_cast<C*>(p);
+	
+	if(a != NULL)
 		std::cout << "A class pointer" << std::endl;
-	else if(dynamic_cast<B*>(p))
+	else if(b !=NULL)
 		std::cout << "B class pointer" << std::endl;
-	else if(dynamic_cast<C*>(p))
+	else if(c !=NULL)
 		std::cout << "C class pointer" << std::endl;
 		
 }
@@ -69,5 +73,4 @@ void identify(Base& p){
 		std::cout << "C class referance" << std::endl;
 	}
 	catch(const std::exception& e){}
-
 }
