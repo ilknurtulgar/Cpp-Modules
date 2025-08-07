@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 15:47:20 by itulgar           #+#    #+#             */
-/*   Updated: 2025/08/07 14:59:55 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/08/07 17:43:28 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void ScalarConverter::convert(const std::string& literal){
 	else
 		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;	
 	
-	if(d < static_cast<double>(std::numeric_limits<int>::max()) || d > static_cast<double>(std::numeric_limits<int>::max()))
+	if(d < static_cast<double>(std::numeric_limits<int>::min()) || d > static_cast<double>(std::numeric_limits<int>::max()))
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
