@@ -15,4 +15,20 @@
 
 #include <iostream>
 
+template <typename T>
+void iter(T* array,int lenght, void (*func)(T&)){
+    for (int i = 0; i < lenght; i++)
+        func(array[i]);
+}
+
+template <typename T>
+void print(T& i){
+    std::cout << i << " ";
+}
+
+
+template <typename T>
+void square(T& i){
+    i *= i;
+}
 #endif
