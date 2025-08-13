@@ -12,17 +12,27 @@
 
 #include "Iter.hpp"
 
+template <typename T>
+void print(T& i){
+    std::cout << i << " ";
+}
+
+template <typename T>
+void square(T& i){
+    i *= i;
+}
+
 int main(){
     int array[] = {1,2,3,4,5};
 
-    iter(array,5,print);
+    iter(array,5,print<int>);
     std::cout << std::endl;
    
-    iter(array,5,square);
-    iter(array,5,print);
+    iter(array,5,square<int>);
+    iter(array,5,print<int>);
     std::cout << std::endl;
 
     std::string famous[] = {"monica","rach","joe","chandler","ross"};
-    iter(famous,5,print);
+    iter(famous,5,print<std::string>);
 
 }

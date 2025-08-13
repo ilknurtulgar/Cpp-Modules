@@ -14,30 +14,30 @@
 #define ARRAY_HPP
 
 #include <iostream>
-#define MAX_VAL 750
 
 template <typename T>
 class Array
 {
     private:
-        T* array;
-        unsigned int lenght;
+    T* array;
+    unsigned int lenght;
     public:
-        Array();
-        Array(T* array, unsigned int lenght);
-        Array(const Array& other);
-        Array& operator=(const Array& other);
-        ~Array();
-
-        //eleman erişimi
-        T& operator[](unsigned int index);
-        const T& operator[](unsigned int index) const;
-        //dizinin elaman sayısını döndürmesi için
-        unsigned int size() const;
-
+    Array();
+    Array(unsigned int len);
+    Array(const Array& other);
+    Array& operator=(const Array& other);
+    ~Array();
+    
+    T& operator[](unsigned int index);
+    const T& operator[](unsigned int index) const;
+    unsigned int size() const;
+    
+    class OutOfException : public std::exception {
+        const char* what() const throw();
+    };
+    
 };
 
-
-
+#include "Array.tpp"
 
 #endif
