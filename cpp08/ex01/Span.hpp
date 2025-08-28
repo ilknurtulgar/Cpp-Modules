@@ -14,16 +14,36 @@
 #define SPAN_HPP
 
 #include <iostream>
+#include <algorithm>
+#include <vector>
+#include <stdexcept>
 
 class Span
 {
 	private:
-		/* data */
+		unsigned int N;
+		std::vector<int> container;
 	public:
-		Span(/* args */);
+		Span();
+		Span(unsigned int n);
+		Span(const Span& other);
+		Span& operator=(const Span& other);
 		~Span();
+
+		void addNumber(int value);
+		int shortestSpan();
+		int longestSpan();
+
+		template <typename T>
+		void addNumbers(T begin, T end){
+			for (T it = begin; it != end; ++it)
+			{
+				if(container.size() >= N)
+					throw std::runtime_error("span is full honey");
+				container.push_back(*it);
+			}
+		}
+
 };
-
-
 
 #endif
