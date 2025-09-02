@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 16:11:55 by itulgar           #+#    #+#             */
-/*   Updated: 2025/08/26 16:27:15 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/09/02 15:12:08 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int Span::shortestSpan(){
 
     if(container.size() < 2)
         throw std::runtime_error("the number range can not be calc honey");
-    // 3,5,6,9,11,17
 
    std::vector<int> sortedCon = container;
    std::sort(sortedCon.begin(), sortedCon.end());
