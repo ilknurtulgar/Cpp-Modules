@@ -2,6 +2,7 @@
 #define RPN_HPP
 
 #include <iostream>
+#include <sstream>
 #include <stack>
 
 class RPN
@@ -11,10 +12,10 @@ class RPN
     public:
         RPN();
         RPN(const RPN& other);
-        RPN operator=(const RPN& other);
+        RPN &operator=(const RPN& other);
         ~RPN();
 
-       void execute();
+       void execute(const std::string& argv);
 };
 
 
