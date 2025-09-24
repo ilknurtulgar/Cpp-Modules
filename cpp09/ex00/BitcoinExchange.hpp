@@ -5,10 +5,11 @@
 #include <map>
 #include <fstream>
 #include <sstream>
+
 class BitcoinExchange
 {
     private:
-        std::map<std::string, float> data;
+        std::map<std::string, double> data;
         bool isOpenFiles(std::ifstream& inputFile, std::ifstream& csvFile);
         void readCSV(std::ifstream& csvFile);
         void handleInputFile(std::ifstream& inputFile);
