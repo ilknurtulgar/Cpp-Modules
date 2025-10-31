@@ -5,6 +5,8 @@
 #include <deque>
 #include <iostream>
 #include <chrono>
+#include <climits>
+#include <stdexcept>
 
 class PmergeMe
 {
@@ -16,11 +18,12 @@ class PmergeMe
         ~PmergeMe();
         PmergeMe(const PmergeMe& other);
         PmergeMe &operator=(const PmergeMe& other);
-        PmergeMe(char **av);
-        
-        void run(int ac, char **av);
-};
 
+        void run(int ac, char **av);
+        void parserContainer(int ac, char **av);
+        // void sorterVector();
+        // void sorterDeque();
+};
 
 
 #endif
