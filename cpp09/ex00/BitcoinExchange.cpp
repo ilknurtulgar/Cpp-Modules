@@ -81,7 +81,7 @@ bool BitcoinExchange::isValidValue(std::string& value){
         return false;
 
    } catch(const std::invalid_argument&){
-        std::cout << "2Error: bad input => " << val << std::endl;
+        std::cout << "Error: bad input => " << val << std::endl;
         return false;
    }
 }
