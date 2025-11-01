@@ -48,7 +48,6 @@ void BitcoinExchange::readCSV(std::ifstream& csvFile){
 }
 
 std::string BitcoinExchange::trim(std::string& str){
-
     size_t first = str.find_first_not_of(" \t");
     if(first == std::string::npos)
       return  "";
@@ -74,7 +73,7 @@ bool BitcoinExchange::isValidValue(std::string& value){
         return false;
     }
 
-    if(num <= 0){
+    if(num < 0){
         std::cout << "Error: not a positive number." << std::endl;
         return false;
     }
@@ -139,16 +138,21 @@ void BitcoinExchange::handleInputFile(std::ifstream& inputFile){
             std::cout << "Error: bad input => " << line << std::endl;
             continue;
         }
-        if(std::getline(ss,date,'|') && std::getline(ss,value)){
+        if(std::getline(ss,date,'|') ){
             date = trim(date);
-            value = trim(value);
-        
-         if(!isValidDate(date) ){
-            std:: cout << "Error: bad input => " << date << std::endl; 
-            continue;
-        }
-        if(!isValidValue(value))
-            continue;
+            if(std::getline(ss,value)){
+                value = trim(value);
+            }else{
+                std:: cout << "Error: bad input => " << line << std::endl; 
+                continue;
+            }
+
+            if(!isValidDate(date)){
+                std:: cout << "Error: bad input => " << date << std::endl; 
+                continue;
+            }
+            if(!isValidValue(value))
+                continue;
         
         std::map<std::string, double>::iterator it = data.lower_bound(date);
         double dataValue;
