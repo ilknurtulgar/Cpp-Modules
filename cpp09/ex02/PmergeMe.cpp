@@ -21,17 +21,26 @@ void PmergeMe::parserContainer(int ac, char **av){
     for (int i = 1; i < ac; i++)
     {
         std::string arv = av[i];
-       if(!std::all_of(arv.begin(), arv.end(), ::isdigit))
-            throw std::invalid_argument("invalid input");
+        for (size_t j = 0; j < arv.size(); ++j)
+        {
+            if(!std::isdigit(static_cast<unsigned char>(arv[j])))
+                throw std::invalid_argument("Error");
+        }
+        
+        std::istringstream ss(arv);
+        long num;
+        ss >> num;
 
-       long num = std::stol(arv);
+        if(ss.fail())
+            throw std::invalid_argument("Error");
        if(num < 0)
-            throw std::invalid_argument("invalid input");
+            throw std::invalid_argument("Error");
 
         if (num > INT_MAX)
-            throw std::out_of_range("invalid input");
-        vectCont.push_back(num);
-        dequeCont.push_back(num);
+            throw std::out_of_range("Error");
+        
+        vectCont.push_back(static_cast<int>(num));
+        dequeCont.push_back(static_cast<int>(num));
     }
 }
 
@@ -41,7 +50,6 @@ void PmergeMe::sorterVector(std::vector<int>& v){
    // 2,5 3,8
    //s 2 3
    // l 5 8
-
    clock_t start = clock();
    if(v.size() <= 1)
         return;
@@ -63,7 +71,6 @@ void PmergeMe::sorterVector(std::vector<int>& v){
         }else
             small.push_back(v[i]);
     }
-
     sorterVector(large);
 
     for (size_t i = 0; i < small.size(); ++i)
@@ -73,24 +80,65 @@ void PmergeMe::sorterVector(std::vector<int>& v){
     }
     v = large;
     clock_t end = clock();
+    vectTime = double(end - start) / CLOCKS_PER_SEC ;
+}
+
+void PmergeMe::sorterDeque(std::deque<int>&d){
+    clock_t start = clock();
+    if(d.size() <= 1)
+        return;
+
+    std::deque<int> small;
+    std::deque<int> large;
+    for (size_t i = 0; i < d.size(); i+=2)
+    {
+        if(i + 1 < d.size()){
+            int a = d[i];
+            int b = d[i + 1];
+            if(a < b){
+                small.push_back(a);
+                large.push_back(b);
+            }else{
+                small.push_back(b);
+                large.push_back(a);
+            }
+        }else
+            small.push_back(d[i]);
+    }
+    sorterDeque(large);
+
+    for (size_t i = 0; i < small.size(); ++i)
+    {
+        std::deque<int>::iterator pos = std::lower_bound(large.begin(),large.end(),small[i]);
+        large.insert(pos,small[i]);
+    }
+    d = large;
+    clock_t end = clock();
+    deqTime = double(end - start) / CLOCKS_PER_SEC ;
 }
 
 void PmergeMe::run(int ac, char **av){
 
-   parserContainer(ac,av);
+    vectTime = 0;
+    deqTime = 0;
+    
+    parserContainer(ac,av);
+    std::cout << "Before: ";
+    printContainer(vectCont);
+    sorterVector(vectCont);
+    std::cout << "After: ";
+    printContainer(vectCont);
+    std::cout << std::endl;
 
     std::cout << "Before: ";
-    for (size_t i = 0; i < vectCont.size(); ++i)
-        std::cout << vectCont[i] << " ";
-    std::cout << std::endl;
-   sorterVector(vectCont);
-
+    printContainer(dequeCont);
+    sorterDeque(dequeCont);
     std::cout << "After: ";
-    for (size_t i = 0; i < vectCont.size(); i++)
-        std::cout << vectCont[i] << " ";
+    printContainer(dequeCont);
     std::cout << std::endl;
 
+    std::cout << std::fixed << std::setprecision(6);
+    printProcessingTime(vectCont,"vector",vectTime);
+    printProcessingTime(dequeCont,"deque",deqTime);
 
-//    sorterDeque();
-    std::cout << "returns honey" << std::endl; 
 }

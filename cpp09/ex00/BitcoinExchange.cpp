@@ -67,7 +67,13 @@ bool BitcoinExchange::isValidValue(std::string& value){
 
    try
    {
-    double num = std::stoi(val);
+    std::istringstream iss(val);
+    double num;
+    if (!(iss >> num)) {
+        std::cout << "Error: bad input => " << val << std::endl;
+        return false;
+    }
+
     if(num <= 0){
         std::cout << "Error: not a positive number." << std::endl;
         return false;
@@ -99,9 +105,12 @@ bool BitcoinExchange::isValidDate(std::string& date){
     day = trim(day);
     month = trim(month);
     year = trim(year);
-    int dayI = std::stoi(day);
-    int monthI = std::stoi(month);
-    int yearI = std::stoi(year);
+    int dayI, monthI, yearI;
+    std::istringstream ssDay(day);
+    std::istringstream ssMonth(month);
+    std::istringstream ssYear(year);
+    if (!(ssDay >> dayI) || !(ssMonth >> monthI) || !(ssYear >> yearI))
+        return false;
 
     int maxDays = 31;
 
@@ -155,7 +164,10 @@ void BitcoinExchange::handleInputFile(std::ifstream& inputFile){
             dataValue = it->second;
         }
        
-        double inpValue = std::stod(value);
+        std::istringstream iss(value);
+        double inpValue;
+        iss >> inpValue;
+
         std::cout << date << " => " << inpValue << " = " << inpValue * dataValue << std::endl;
     }
 

@@ -49,7 +49,12 @@ void RPN::execute(const std::string& argv){
         }else{
             try
             {
-                int num =  std::stoi(key);
+                std::istringstream ss(key);
+                int num;
+                if(!(ss >> num)){
+                    std::cerr << "Error" << std::endl;
+                    return;
+                }
                 container.push(num);
             }
             catch(const std::invalid_argument&)

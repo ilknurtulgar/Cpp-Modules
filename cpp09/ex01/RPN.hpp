@@ -18,7 +18,4 @@ class RPN
        void execute(const std::string& argv);
 };
 
-
-
-
 #endif
