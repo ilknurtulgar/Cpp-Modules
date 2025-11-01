@@ -35,11 +35,62 @@ void PmergeMe::parserContainer(int ac, char **av){
     }
 }
 
+void PmergeMe::sorterVector(std::vector<int>& v){
+   //5,2,8,3
+   //5,2 8,3
+   // 2,5 3,8
+   //s 2 3
+   // l 5 8
 
+   clock_t start = clock();
+   if(v.size() <= 1)
+        return;
+
+    std::vector<int> small;
+    std::vector<int> large;
+    for (size_t i = 0; i < v.size(); i+=2)
+    {
+        if(i + 1 < v.size()){
+            int a = v[i];
+            int b = v[i + 1];
+            if(a < b){
+                small.push_back(a);
+                large.push_back(b);
+            }else{
+                small.push_back(b);
+                large.push_back(a);
+            }
+        }else
+            small.push_back(v[i]);
+    }
+
+    sorterVector(large);
+
+    for (size_t i = 0; i < small.size(); ++i)
+    {
+        std::vector<int>::iterator pos = std::lower_bound(large.begin(),large.end(),small[i]);
+        large.insert(pos,small[i]);
+    }
+    v = large;
+    clock_t end = clock();
+}
 
 void PmergeMe::run(int ac, char **av){
+
    parserContainer(ac,av);
-//    sorterVector();
+
+    std::cout << "Before: ";
+    for (size_t i = 0; i < vectCont.size(); ++i)
+        std::cout << vectCont[i] << " ";
+    std::cout << std::endl;
+   sorterVector(vectCont);
+
+    std::cout << "After: ";
+    for (size_t i = 0; i < vectCont.size(); i++)
+        std::cout << vectCont[i] << " ";
+    std::cout << std::endl;
+
+
 //    sorterDeque();
     std::cout << "returns honey" << std::endl; 
 }

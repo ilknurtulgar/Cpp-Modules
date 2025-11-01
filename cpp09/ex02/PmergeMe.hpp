@@ -21,7 +21,7 @@ class PmergeMe
 
         void run(int ac, char **av);
         void parserContainer(int ac, char **av);
-        // void sorterVector();
+        void sorterVector(std::vector<int>& v);
         // void sorterDeque();
 };
 
