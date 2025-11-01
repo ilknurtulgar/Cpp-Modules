@@ -46,10 +46,6 @@ void PmergeMe::parserContainer(int ac, char **av){
 
 void PmergeMe::sorterVector(std::vector<int>& v){
    //5,2,8,3
-   //5,2 8,3
-   // 2,5 3,8
-   //s 2 3
-   // l 5 8
    clock_t start = clock();
    if(v.size() <= 1)
         return;

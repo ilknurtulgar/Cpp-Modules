@@ -51,7 +51,8 @@ void RPN::execute(const std::string& argv){
             {
                 std::istringstream ss(key);
                 int num;
-                if(!(ss >> num)){
+                char extra;
+                if(!(ss >> num) || ss >> extra){
                     std::cerr << "Error" << std::endl;
                     return;
                 }
