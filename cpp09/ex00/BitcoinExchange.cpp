@@ -78,11 +78,11 @@ bool BitcoinExchange::isValidValue(std::string& value){
         return false;
     }
     if(num > 1000)
-        throw std::out_of_range("value > 1000");
+        throw std::out_of_range("too large a number.");
     return true;
-   } catch(const std::out_of_range&)
+   } catch(const std::out_of_range& e)
    {
-        std::cout << "Error: too large a number." << std::endl;
+        std::cout << "Error: " << e.what() << std::endl;
         return false;
 
    } catch(const std::invalid_argument&){
