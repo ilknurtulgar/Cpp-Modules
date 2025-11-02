@@ -114,7 +114,7 @@ bool BitcoinExchange::isValidDate(std::string& date){
     std::istringstream ssYear(year);
     if (!(ssDay >> dayI) || !(ssMonth >> monthI) || !(ssYear >> yearI))
         return false;
-
+	
     int maxDays = 31;
 
     if (yearI < 1 || (monthI < 1 || monthI > 12) || dayI < 1)
@@ -165,7 +165,7 @@ void BitcoinExchange::handleInputFile(std::ifstream& inputFile){
             dataValue = it->second;
         }else {
             if(it == data.begin()){
-                std::cout << "Error: no earlier date." << std::endl;
+                std::cout << "Error: not valid input date => " << date << std::endl;
                 continue; 
             }
             --it;

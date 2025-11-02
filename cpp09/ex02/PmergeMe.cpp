@@ -23,7 +23,6 @@ void PmergeMe::parserContainer(int ac, char **av){
         std::string arv = av[i];
         for (size_t j = 0; j < arv.size(); ++j)
         {
-			std::cout << arv << std::endl;
             if(!std::isdigit(static_cast<unsigned char>(arv[j])))
                 throw std::invalid_argument("Error");
         }

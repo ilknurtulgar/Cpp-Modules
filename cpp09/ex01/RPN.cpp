@@ -56,14 +56,13 @@ void RPN::execute(const std::string& argv){
                     std::cerr << "Error" << std::endl;
                     return;
                 }
+				if(num >= 10 || num < 0)
+					throw std::invalid_argument("invalid argument");
                 container.push(num);
             }
             catch(const std::invalid_argument&)
             {
                 std::cerr << "Error" << std::endl;
-                return;
-            }catch(const std::out_of_range&){
-                std::cerr <<  "Error" << std::endl;
                 return;
             }
         }
