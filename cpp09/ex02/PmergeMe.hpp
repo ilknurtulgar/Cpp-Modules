@@ -34,7 +34,7 @@ class PmergeMe
         void printContainer(T& con){
         for (size_t i = 0; i < con.size(); ++i)
             std::cout << con[i] << " ";
-            std::cout << std::endl;
+        std::cout << std::endl;
         }
 
         template <typename T>
