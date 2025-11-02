@@ -23,9 +23,12 @@ bool BitcoinExchange::isOpenFiles(std::ifstream& inputFile, std::ifstream& csvFi
     }
     
     std::string line;
-    if(!std::getline(inputFile,line) || !std::getline(csvFile,line)){
-            std::cout <<  "Error: empty file." << std::endl;
-            return false;
+	std::getline(inputFile,line);
+	std::string trimLine = trim(line);
+	if(trimLine != "date | value")
+	{
+        std::cout <<  "Error: bad file format." << std::endl;
+        return false;
     }
     
     return true;
@@ -60,7 +63,7 @@ bool BitcoinExchange::isValidValue(std::string& value){
    std::string val = trim(value);
     
    if(val.empty()){
-        std::cout << "Error: bad input => (empty)" << std::endl;
+        std::cout << "Error: bad input => (empty)" << value << std::endl;
         return false;
    }
 
@@ -68,7 +71,8 @@ bool BitcoinExchange::isValidValue(std::string& value){
    {
     std::istringstream iss(val);
     double num;
-    if (!(iss >> num)) {
+	char extra;
+    if (!(iss >> num) || iss >> extra) {
         std::cout << "Error: bad input => " << val << std::endl;
         return false;
     }
@@ -133,11 +137,11 @@ void BitcoinExchange::handleInputFile(std::ifstream& inputFile){
         std::stringstream ss(line);
         std::string date;
         std::string value;
-
         if(line.find('|') == std::string::npos){
             std::cout << "Error: bad input => " << line << std::endl;
             continue;
         }
+
         if(std::getline(ss,date,'|') ){
             date = trim(date);
             if(std::getline(ss,value)){
