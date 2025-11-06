@@ -26,7 +26,6 @@ class PmergeMe
         PmergeMe &operator=(const PmergeMe& other);
 
         void run(int ac, char **av);
-        void parserContainer(int ac, char **av);
         void sorterVector(std::vector<int>& v);
         void sorterDeque(std::deque<int>&d);
 

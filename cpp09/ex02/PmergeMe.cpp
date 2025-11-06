@@ -16,36 +16,8 @@ PmergeMe &PmergeMe::operator=(const PmergeMe& other){
 
 PmergeMe::~PmergeMe(){}
 
-
-void PmergeMe::parserContainer(int ac, char **av){
-    for (int i = 1; i < ac; i++)
-    {
-        std::string arv = av[i];
-        for (size_t j = 0; j < arv.size(); ++j)
-        {
-            if(!std::isdigit(static_cast<unsigned char>(arv[j])))
-                throw std::invalid_argument("Error");
-        }
-        
-        std::istringstream ss(arv);
-        long num;
-        ss >> num;
-
-        if(ss.fail())
-            throw std::invalid_argument("Error");
-       if(num < 0)
-            throw std::invalid_argument("Error");
-
-        if (num > INT_MAX)
-            throw std::out_of_range("Error");
-        
-        vectCont.push_back(static_cast<int>(num));
-        dequeCont.push_back(static_cast<int>(num));
-    }
-}
-
 void PmergeMe::sorterVector(std::vector<int>& v){
-   clock_t start = clock();
+  
    if(v.size() <= 1)
         return;
 
@@ -74,12 +46,10 @@ void PmergeMe::sorterVector(std::vector<int>& v){
         large.insert(pos,small[i]);
     }
     v = large;
-    clock_t end = clock();
-    vectTime = double(end - start) / CLOCKS_PER_SEC ;
 }
 
 void PmergeMe::sorterDeque(std::deque<int>&d){
-    clock_t start = clock();
+ 
     if(d.size() <= 1)
         return;
 
@@ -108,31 +78,86 @@ void PmergeMe::sorterDeque(std::deque<int>&d){
         large.insert(pos,small[i]);
     }
     d = large;
-    clock_t end = clock();
-    deqTime = double(end - start) / CLOCKS_PER_SEC ;
+    
 }
 
 void PmergeMe::run(int ac, char **av){
 
     vectTime = 0;
-    deqTime = 0;
-    
-    parserContainer(ac,av);
-    std::cout << "Before: ";
-    printContainer(vectCont);
-    sorterVector(vectCont);
-    std::cout << "After: ";
-    printContainer(vectCont);
-    std::cout << std::endl;
+	deqTime = 0;
+
+	for (int i = 1; i < ac; i++)
+		{
+			std::string arv = av[i];
+			for (size_t j = 0; j < arv.size(); ++j)
+			{
+				if(!std::isdigit(static_cast<unsigned char>(arv[j])))
+					throw std::invalid_argument("Error");
+			}
+			
+			std::istringstream ss(arv);
+			long num;
+			ss >> num;
+
+			if(ss.fail())
+				throw std::invalid_argument("Error");
+		if(num < 0)
+				throw std::invalid_argument("Error");
+
+			if (num > INT_MAX)
+				throw std::out_of_range("Error");
+		
+	}
+
+	clock_t dStart = clock();
+
+	for (int i = 1; i < ac; i++)
+	{
+		std::string arv = av[i];
+		std::istringstream ss(arv);
+		long num;
+		ss >> num;
+		dequeCont.push_back(static_cast<int>(num));
+	}
+	
 
     std::cout << "Before: ";
     printContainer(dequeCont);
+	std::cout << std::endl;
+
     sorterDeque(dequeCont);
+
+	clock_t dEnd = clock();
+	deqTime = double(dEnd - dStart) / CLOCKS_PER_SEC ;
+
+	clock_t vStart = clock();
+	for (int i = 1; i < ac; i++)
+	{
+		std::string arv = av[i];
+		std::istringstream ss(arv);
+		long num;
+		ss >> num;
+		vectCont.push_back(static_cast<int>(num));
+
+	}
+		
+	std::cout << "Before: ";
+	printContainer(vectCont);
+	std::cout << std::endl;
+
+	sorterVector(vectCont);
+	clock_t vEnd = clock();
+    vectTime = double(vEnd - vStart) / CLOCKS_PER_SEC ;
+
+	std::cout << "After: ";
+	printContainer(vectCont);
+	std::cout << std::endl;
+
     std::cout << "After: ";
     printContainer(dequeCont);
     std::cout << std::endl;
 
-    std::cout << std::fixed << std::setprecision(6);
+    std::cout << std::fixed << std::setprecision(5);
     printProcessingTime(vectCont,"vector",vectTime);
     printProcessingTime(dequeCont,"deque",deqTime);
 
